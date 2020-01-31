@@ -3,14 +3,14 @@ version: "3.7"
 services: 
 
     MySQL:
-        image: tuhin2929/sqlrepo
+        image: sqlrepo
         container_name: db_mysql
         restart: always
         environment: 
           MYSQL_ROOT_PASSWORD: root-pass 
-          MYSQL_DATABASE: AFS
-          MYSQL_USERNAME: afs
-          MYSQL_PASSWORD: Afs2019
+          MYSQL_DATABASE: #db_name
+          MYSQL_USERNAME: #username
+          MYSQL_PASSWORD: #password
         ports:
           - 3336:3306
         networks: 
@@ -18,14 +18,14 @@ services:
               ipv4_address: 172.20.0.5 
      
     mongo1:
-        image: tuhin2929/mongorepo
+        image: mongorepo
         container_name: mongo
         restart: always
         ports:
           - 27017:27017
         environment:
-          MONGO_INITDB_ROOT_USERNAME: afs
-          MONGO_INITDB_ROOT_PASSWORD: Afs2019
+          MONGO_INITDB_ROOT_USERNAME: #username
+          MONGO_INITDB_ROOT_PASSWORD: #password
         networks: 
           nw_riskp:
             ipv4_address: 172.20.0.6
@@ -38,9 +38,9 @@ services:
           - 8081:8081
         environment:
           ME_CONFIG_MONGODB_SERVER: mongo1
-          ME_CONFIG_MONGODB_AUTH_DATABASE: admin
-          ME_CONFIG_MONGODB_AUTH_USERNAME: afs
-          ME_CONFIG_MONGODB_AUTH_PASSWORD: Afs2019
+          ME_CONFIG_MONGODB_AUTH_DATABASE: #db name
+          ME_CONFIG_MONGODB_AUTH_USERNAME: # username
+          ME_CONFIG_MONGODB_AUTH_PASSWORD: # password
           ME_CONFIG_MONGODB_PORT: 27017
         depends_on:  
           - mongo1
@@ -51,7 +51,7 @@ services:
             ipv4_address: 172.20.0.7
           
     riskProbeAPI:
-        image: tuhin2929/apirepo
+        image: apirepo
         container_name: api_rp
         ports: 
           - 3005:3005
