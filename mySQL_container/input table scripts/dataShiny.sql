@@ -1,0 +1,11 @@
+SELECT * FROM AFS.dataShiny;
+
+INSERT INTO `AFS`.`dataShiny` (`ques`, `input`, `entered`, `fullQues`, `analysis`, `res1`, `res2`, `res3`) VALUES ('inpq1', 2, 01, 'Have inadequate or missing data been re-assessed and reviewed for model feasibility ?', 'Analysis 1', 'The Internal Audit Team performed procedural investigations to assess the consideration of missing value treatment by the Model development team for building IFRS 9 Models.', 'The Internal Audit Team performed procedural investigations to assess the consideration of missing value treatment by the Model development team for building IFRS 9 Models.', 'The Internal Audit Team performed procedural investigations to assess the consideration of missing value treatment by the Model development team for building IFRS 9 Models.');
+INSERT INTO `AFS`.`dataShiny` (`ques`, `input`, `entered`, `fullQues`, `analysis`, `res1`, `res2`, `res3`) VALUES ('inpq2', 2, 01, 'Were the outliers (if applicable) in the data adequatly treated?', 'Analysis 2', 'The Internal Audit Team performed procedural investigations to assess the consideration of Outlier detection and treatment by the Model development team for building IFRS 9 Models.', 'The Internal Audit Team performed procedural investigations to assess the Outlier detection and handling process adopted by the Model development team for building IFRS 9 Models.', 'The Internal Audit Team performed procedural investigations to assess the Outlier detection and handling process adopted by the Model development team for building IFRS 9 Models.');
+
+DELETE FROM `AFS`.`dataShiny` WHERE (`ques` = 'inpq2');
+
+UPDATE `AFS`.`dataShiny` SET `ques` = 'inpq2', `fullQues` = 'Were the outliers (if applicable) in the data adequatly treated?', `analysis` = 'Analysis 2', `res1` = 'The Internal Audit Team performed procedural investigations to assess the consideration of Outlier detection and treatment by the Model development team for building IFRS 9 Models.', `res2` = 'The Internal Audit Team performed procedural investigations to assess the Outlier detection and handling process adopted by the Model development team for building IFRS 9 Models.', `res3` = 'The Internal Audit Team performed procedural investigations to assess the Outlier detection and handling process adopted by the Model development team for building IFRS 9 Models.' WHERE (`ques` = 'inpq1');
+
+
+

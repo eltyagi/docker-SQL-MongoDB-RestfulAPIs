@@ -1,0 +1,40 @@
+# start from the rocker/r-ver:3.5.0 image
+FROM rocker/r-ver:3.5.0
+
+# install the linux libraries needed for plumber
+RUN apt-get update -qq && apt-get install -y \
+  libssl-dev \
+  libcurl4-gnutls-dev \
+  libcurl4-gnutls-dev \
+  libcairo2-dev \
+  libxt-dev \
+  libssh2-1-dev \
+  libsodium-dev \
+  libsasl2-dev
+
+# system library dependency for the app
+RUN apt-get update && apt-get install -y \
+    libmpfr-dev
+
+
+# install packages
+RUN R -e "install.packages('plumber')"
+RUN R -e "install.packages('DBI', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('RJDBC', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('promises', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('jsonlite', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('sodium', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('dplyr', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('lubridate', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('openssl', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('mongolite', repos='https://cloud.r-project.org/')"
+RUN R -e "install.packages('jose', repos='https://cloud.r-project.org/')"
+
+# copy everything from the current directory into the container
+COPY / /
+
+# open port 80 to traffic
+EXPOSE 80
+
+# when the container starts, start the main.R script
+ENTRYPOINT ["Rscript", "plumber.R"]
