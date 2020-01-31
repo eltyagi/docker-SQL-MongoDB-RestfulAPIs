@@ -1,8 +1,10 @@
 FROM debian:jessie-slim
 
-ENV MONGO_INITDB_ROOT_USERNAME=afs \
-    MONGO_INITDB_ROOT_PASSWORD=afs@2019 \
-    DOCKER_INITDB_DATABASE=afsuserlog 
+LABEL maintainer="Lakshya Tyagi"
+
+ENV MONGO_INITDB_ROOT_USERNAME=  \
+    MONGO_INITDB_ROOT_PASSWORD= \
+    DOCKER_INITDB_DATABASE=
 
 RUN apt-get update && \
 apt-get install -y ca-certificates && \
