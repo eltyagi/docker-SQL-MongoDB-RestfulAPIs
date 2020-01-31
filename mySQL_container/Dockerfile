@@ -1,6 +1,6 @@
 FROM mysql:8.0 as builder
 
-LABEL maintainer="Revanth Nemani <raynemani@gmail.com>"
+LABEL maintainer="Lakshya Tyagi"
 
 RUN ["sed", "-i", "s/exec \"$@\"/echo \"not running $@\"/", "/usr/local/bin/docker-entrypoint.sh"]
 ENV MYSQL_ROOT_PASSWORD=root
