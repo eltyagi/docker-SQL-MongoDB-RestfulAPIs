@@ -1,6 +1,8 @@
 # start from the rocker/r-ver:3.5.0 image
 FROM rocker/r-ver:3.5.0
 
+LABEL maintainer="Lakshya Tyagi"
+
 # install the linux libraries needed for plumber
 RUN apt-get update -qq && apt-get install -y \
   libssl-dev \
